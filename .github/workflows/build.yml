@@ -457,6 +457,9 @@ jobs:
           sed -e 's/SYM_FUNC_START_PI(clear_page)/SYM_FUNC_START_PI(__pi_clear_page)/' clear_page_16bytes_align.patch > clear_page_16bytes_align__pi.patch
           patch -p1 -F3 --forward < clear_page_16bytes_align__pi.patch
         fi
+        if [[ "$(printf '%s\n' "${{ inputs.kernel_version }}" "$MIN_VERSION" | sort -V | head -n1)" = "${{ inputs.kernel_version }}" ]]; then
+          cp "$KERNEL_PATCHES/common/tcpreorg.patch" ./
+          patch -p1 --forward < tcpreorg.patch
 
     - name: Add BBG
       if: true
