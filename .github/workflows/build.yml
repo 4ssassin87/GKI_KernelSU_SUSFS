@@ -444,7 +444,7 @@ jobs:
         MIN_VER2="6.5"
         if [[ "$(printf '%s\n' "${{ inputs.kernel_version }}" "$MIN_VER2" | sort -V | head -n1)" = "${{ inputs.kernel_version }}" ]]; then
           cp "$KERNEL_PATCHES/common/tcpreorg.patch" ./
-          patch -p1 --forward < tcpreorg.patch
+          patch -p1 --forward < tcpreorg2.patch
         fi
 
     - name: Add BBG
