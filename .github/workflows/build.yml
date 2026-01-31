@@ -439,7 +439,6 @@ jobs:
         esac
 
     - name: Apply Performance Patches
-      if: false
       working-directory: ${{ env.KERNEL_ROOT }}/common
       run: |
         MIN_VERSION="5.16"
